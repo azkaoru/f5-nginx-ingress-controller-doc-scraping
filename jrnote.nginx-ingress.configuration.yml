@@ -1,0 +1,49 @@
+setting:
+ https.proxy:
+ scraping_url: https://docs.nginx.com/nginx-ingress-controller/
+ deepl_enable: false
+ deepl_apikey: "todo"
+
+jrnote:
+- configurationGlobalConfig
+- configurationIngressResources
+- configurationVirtualServer
+- configurationTransportServer
+- configurationPolicy
+- configurationCustomTemplates
+- configurationCustomAnnotations
+
+configurationGlobalConfig_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+configurationIngressResources_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/configuration/ingress-resources/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+configurationVirtualServer_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/configuration/virtualserver-and-virtualserverroute-resources/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+configurationTransportServer_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/configuration/transportserver-resource/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+configurationPolicy_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/configuration/policy-resource/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+configurationCustomTemplates_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/custom-templates/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+configurationCustomAnnotations_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/custom-annotations/
+ section: //h1
+ componet: ./../following-sibling::main/h2

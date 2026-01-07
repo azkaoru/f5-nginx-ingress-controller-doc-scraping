@@ -1,0 +1,49 @@
+setting:
+ https.proxy:
+ scraping_url: https://docs.nginx.com/nginx-ingress-controller/
+ deepl_enable: false
+ deepl_apikey: "todo"
+
+jrnote:
+- installationHelm
+- installationManifests
+- installationOperator
+- installationBuildingImages
+- installationRunningMultiple
+- installationUpgrade
+- installationUninstall
+
+installationHelm_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/installation-with-helm/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+installationManifests_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/installation-with-manifests/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+installationOperator_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/installation-with-operator/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+installationBuildingImages_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/installation/building-nginx-ingress-controller/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+installationRunningMultiple_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/installation/running-multiple-ingress-controllers/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+installationUpgrade_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/installation/upgrading/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+installationUninstall_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/installation/uninstall/
+ section: //h1
+ componet: ./../following-sibling::main/h2

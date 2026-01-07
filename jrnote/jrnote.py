@@ -101,7 +101,8 @@ class JRNoteParser(object):
         all_text = section_elm.xpath('.//text()')
         # リストで取得されるため、結合する場合
         major_tilte = ' '.join(all_text)
-        parent_title = section_elm.xpath('preceding-sibling::*[1]')[0].text
+        preceding_siblings = section_elm.xpath('preceding-sibling::*[1]')
+        parent_title = preceding_siblings[0].text if preceding_siblings and preceding_siblings[0].text else ""
 
         first_bodys = section_elm.getparent().xpath('./../main/*')
         previous_first_join_body = None
@@ -179,7 +180,8 @@ class JRNoteParser(object):
         all_text = section_elm.xpath('.//text()')
         # リストで取得されるため、結合する場合
         major_tilte = ' '.join(all_text)
-        parent_title = section_elm.xpath('preceding-sibling::*[1]')[0].text
+        preceding_siblings = section_elm.xpath('preceding-sibling::*[1]')
+        parent_title = preceding_siblings[0].text if preceding_siblings and preceding_siblings[0].text else ""
         h1_parent_brothers = section_elm.xpath('./../following-sibling::*')
         for h1_parent_brother in h1_parent_brothers:
             if h1_parent_brother.tag == "h1" or h1_parent_brother.tag == "h2": 
@@ -242,7 +244,8 @@ class JRNoteParser(object):
         all_text = section_elm.xpath('.//text()')
         # リストで取得されるため、結合する場合
         major_tilte = ' '.join(all_text)
-        parent_title = section_elm.xpath('preceding-sibling::*[1]')[0].text
+        preceding_siblings = section_elm.xpath('preceding-sibling::*[1]')
+        parent_title = preceding_siblings[0].text if preceding_siblings and preceding_siblings[0].text else ""
         componet_elms = section_elm.xpath(scrape_con['componet'])
         for item in componet_elms:
             #if item.text == "Defaults config" and item.getattr("id") != "defaults-config-enterprise-defaults-version-v3-0":

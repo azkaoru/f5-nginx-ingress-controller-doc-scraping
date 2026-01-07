@@ -1,0 +1,19 @@
+setting:
+ https.proxy:
+ scraping_url: https://docs.nginx.com/nginx-ingress-controller/
+ deepl_enable: false
+ deepl_apikey: "todo"
+
+jrnote:
+- gettingStarted
+- overview
+
+gettingStarted_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/overview/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+overview_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/overview/product-telemetry/
+ section: //h1
+ componet: ./../following-sibling::main/h2

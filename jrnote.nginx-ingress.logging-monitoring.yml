@@ -1,0 +1,31 @@
+setting:
+ https.proxy:
+ scraping_url: https://docs.nginx.com/nginx-ingress-controller/
+ deepl_enable: false
+ deepl_apikey: "todo"
+
+jrnote:
+- loggingMonitoringLogging
+- loggingMonitoringPrometheus
+- loggingMonitoringOpentelemetry
+- loggingMonitoringTracing
+
+loggingMonitoringLogging_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/logging-and-monitoring/logging/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+loggingMonitoringPrometheus_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/logging-and-monitoring/prometheus/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+loggingMonitoringOpentelemetry_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/logging-and-monitoring/opentelemetry/
+ section: //h1
+ componet: ./../following-sibling::main/h2
+
+loggingMonitoringTracing_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/logging-and-monitoring/tracing/
+ section: //h1
+ componet: ./../following-sibling::main/h2

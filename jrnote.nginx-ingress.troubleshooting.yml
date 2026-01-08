@@ -1,0 +1,37 @@
+setting:
+ https.proxy:
+ scraping_url: https://docs.nginx.com/nginx-ingress-controller/
+ deepl_enable: false
+ deepl_apikey: "todo"
+
+jrnote:
+- troubleshootingCommercialSupport
+- troubleshootingCommonIssues
+- troubleshootingIngress
+- troubleshootingConfigmapPolicy
+- troubleshootingVirtualserver
+
+troubleshootingCommercialSupport_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/troubleshoot-support/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+troubleshootingCommonIssues_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/troubleshoot-common/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+troubleshootingIngress_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/troubleshoot-ingress/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+troubleshootingConfigmapPolicy_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/troubleshoot-configmap-policy/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+troubleshootingVirtualserver_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/troubleshoot-virtualserver/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]

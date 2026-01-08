@@ -1,0 +1,61 @@
+setting:
+ https.proxy:
+ scraping_url: https://docs.nginx.com/nginx-ingress-controller/
+ deepl_enable: false
+ deepl_apikey: "todo"
+
+jrnote:
+- tutorialsVirtualServerCustomListenerPorts
+- tutorialsSecurityMonitoring
+- tutorialsOidcCustomConfiguration
+- tutorialsCustomListenPorts
+- tutorialsIngressPathRegexAnnotation
+- tutorialsNginxIngressIstio
+- tutorialsNginxIngressLinkerd
+- tutorialsNginxIngressOsm
+- tutorialsNginxDynamicModule
+
+tutorialsVirtualServerCustomListenerPorts_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/tutorials/virtual-server-with-custom-listener-ports/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+tutorialsSecurityMonitoring_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/tutorials/security-monitoring/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+tutorialsOidcCustomConfiguration_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/tutorials/oidc-custom-configuration/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+tutorialsCustomListenPorts_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/tutorials/custom-listen-ports/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+tutorialsIngressPathRegexAnnotation_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/tutorials/ingress-path-regex-annotation/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+tutorialsNginxIngressIstio_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/tutorials/nginx-ingress-istio/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+tutorialsNginxIngressLinkerd_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/tutorials/nginx-ingress-linkerd/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+tutorialsNginxIngressOsm_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/tutorials/nginx-ingress-osm/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+tutorialsNginxDynamicModule_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/tutorials/nginx-dynamic-module/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]

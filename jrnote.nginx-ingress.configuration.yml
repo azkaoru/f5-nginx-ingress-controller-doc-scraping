@@ -16,34 +16,34 @@ jrnote:
 configurationGlobalConfig_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 configurationIngressResources_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/configuration/ingress-resources/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 configurationVirtualServer_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/configuration/virtualserver-and-virtualserverroute-resources/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 configurationTransportServer_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/configuration/transportserver-resource/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 configurationPolicy_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/configuration/policy-resource/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 configurationCustomTemplates_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/custom-templates/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 configurationCustomAnnotations_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/custom-annotations/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]

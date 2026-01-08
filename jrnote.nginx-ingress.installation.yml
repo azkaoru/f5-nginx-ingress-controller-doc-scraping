@@ -16,34 +16,34 @@ jrnote:
 installationHelm_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/installation-with-helm/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 installationManifests_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/installation-with-manifests/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 installationOperator_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/installation-with-operator/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 installationBuildingImages_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/installation/building-nginx-ingress-controller/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 installationRunningMultiple_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/installation/running-multiple-ingress-controllers/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 installationUpgrade_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/installation/upgrading/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 installationUninstall_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/installation/uninstall/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]

@@ -13,19 +13,19 @@ jrnote:
 loggingMonitoringLogging_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/logging-and-monitoring/logging/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 loggingMonitoringPrometheus_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/logging-and-monitoring/prometheus/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 loggingMonitoringOpentelemetry_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/logging-and-monitoring/opentelemetry/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
 loggingMonitoringTracing_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/logging-and-monitoring/tracing/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]

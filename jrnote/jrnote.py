@@ -96,178 +96,37 @@ class JRNoteParser(object):
         content = self.httpclient.get(scrape_con['url'])
         data = content.read()
         elem = html.fromstring(data)
-        section_elm = elem.xpath("//h1")[0]
+        section_elm = elem.xpath(scrape_con['section'])[0]
         # 配下のすべてのテキストを取得
         all_text = section_elm.xpath('.//text()')
         # リストで取得されるため、結合する場合
         major_tilte = ' '.join(all_text)
-        preceding_siblings = section_elm.xpath('preceding-sibling::*[1]')
-        parent_title = preceding_siblings[0].text if len(preceding_siblings) > 0 and preceding_siblings[0].text else ""
-
-        first_bodys = section_elm.getparent().xpath('./../main/*')
-        previous_first_join_body = None
-        first_join_body = ""
-        for first_body in first_bodys:
-
-            first_body_all_text = first_body.xpath(
-                    './/text()['
-                    'not(ancestor::script)'
-                    ' and (not(ancestor::select) or ancestor::option[@selected])'
-                    ' and not(ancestor::div[contains(concat(" ", normalize-space(@class), " "), " language-id ")])'
-                    ']'
-                )
-            if first_join_body != "":
-                    previous_first_join_body = first_join_body
-            first_join_body = ' '.join(first_body_all_text)
-            if previous_first_join_body != None and first_join_body == previous_first_join_body:
-                continue
-
-            if self.deepl_enable :
-                translated = self.httpclient.get_honyaku_deepl(self.deepl_apikey,first_join_body)
-                if translated is not None:
-                    first_join_body = translated
-            print  (parent_title ,",", major_tilte + ",", "NONE,", "\"", first_join_body.strip().replace('\n','').replace(",", u"、"), "\"")
-
-        componet_elms = section_elm.xpath(scrape_con['componet'])
-        for item in componet_elms:
-            # 配下のすべてのテキストを取得
-            #all_text = item.xpath('.//text()')
-            all_text = item.text
-            # リストで取得されるため、結合する場合
-            texts = [self.normalize_text(t) for t in all_text]
-            minor_title = ' '.join(texts)
-
-            body_all_text = ""
-            desc_all_text = ""
-            join_body = ""
-            previous_join_body = None
-            bodys = item.xpath('./following-sibling::*')
-            for body in bodys:
-                body_all_text = body.xpath(
-                    './/text()['
-                    'not(ancestor::script)'
-                    ' and (not(ancestor::select) or ancestor::option[@selected])'
-                    ' and not(ancestor::div[contains(concat(" ", normalize-space(@class), " "), " language-id ")])'
-                    ']'
-                )
-                #body_all_text = body.xpath('.//text()[not(ancestor::script) and (not(ancestor::select) or ancestor::option[@selected])]')
-                if join_body != "":
-                    previous_join_body = join_body
-                join_body = ' '.join(body_all_text)
-                if previous_join_body != None and join_body == previous_join_body:
-                    continue
-                if self.deepl_enable:
-                    translated = self.httpclient.get_honyaku_deepl(self.deepl_apikey,join_body)
-                    if translated is not None:
-                        join_body = translated
-                print (parent_title ,",", major_tilte + ",", minor_title + ",", "\"",  join_body.strip().replace( '\n', '').replace(",", u"、"), "\"")
-
-    def communityConfigurationTcpCrd_scraping(self,data,scrape_con,DEF_ITEM="defaultscraping"):
-        self.communityConfigurationDefaultsCRD_scraping(data,scrape_con,DEF_ITEM)
-
-    def communityConfigurationStartupArgs_scraping(self,data,scrape_con,DEF_ITEM="defaultscraping"):
-        self.communityConfigurationIngressAnnotations_scraping(data,scrape_con,DEF_ITEM)
-
-    def communityConfigurationServiceAnnotations_scraping(self,data,scrape_con,DEF_ITEM="defaultscraping"):
-        self.communityConfigurationIngressAnnotations_scraping(data,scrape_con,DEF_ITEM)
-
-    def communityConfigurationIngressAnnotations_scraping(self,data,scrape_con,DEF_ITEM="defaultscraping"):
-        content = self.httpclient.get(scrape_con['url'])
-        data = content.read()
-        elem = html.fromstring(data)
-        section_elm = elem.xpath("//h1")[0]
-        # 配下のすべてのテキストを取得
-        all_text = section_elm.xpath('.//text()')
-        # リストで取得されるため、結合する場合
-        major_tilte = ' '.join(all_text)
-        preceding_siblings = section_elm.xpath('preceding-sibling::*[1]')
-        parent_title = preceding_siblings[0].text if len(preceding_siblings) > 0 and preceding_siblings[0].text else ""
-        h1_parent_brothers = section_elm.xpath('./../following-sibling::*')
-        for h1_parent_brother in h1_parent_brothers:
-            if h1_parent_brother.tag == "h1" or h1_parent_brother.tag == "h2": 
+        # 兄弟要素群を取得
+        following_siblings = section_elm.xpath('following-sibling::*')
+        minor_item = None
+        for fs in following_siblings:
+            if fs.tag == "h2" : 
                  break
-            print (parent_title ,",", major_tilte + ",", "NONE", "\"",  ' '.join( h1_parent_brother.xpath('.//text()[not(ancestor::script) and (not(ancestor::select) or ancestor::option[@selected])]')).strip().replace( '\n', '').replace(",", u"、"), "\"") 
-
-        h2_elms = section_elm.xpath(scrape_con['componet'])
-        for h2_elm in h2_elms:
-            # h2のテキストを取得
-            minor_title = h2_elm.xpath('.//text()')[0]
-            body_all_text = ""
-            join_body = ""
-            bodys = h2_elm.xpath('./following-sibling::*')
+            print (major_tilte,",", "NONE," , "NONE,", "\"",  ' '.join( fs.xpath('.//text()')).strip().replace( '\n', '').replace(",", u"、"), "\"")
+        
+        comp_elms = section_elm.xpath(scrape_con['componet'])
+        join_body = ""
+        minor_title = "NONE"
+        child_title = "NONE"
+        for comp_item in comp_elms: 
+            if comp_item.tag == "h2": 
+                minor_title = comp_item.xpath("./div//a")[0].text
+                child_title = "NONE"
+            elif comp_item.tag == "h3":
+                child_title = comp_item.xpath("./div//a")[0].text
+            bodys = comp_item.xpath('./following-sibling::*')
             for body in bodys:
-                if body.tag == "h2": 
-                     break
-                body_all_texts = body.xpath('.//text()')
-                all_body = ' '.join(body_all_texts)
-                join_body += all_body
-            #     if self.deepl_enable:
-            #         translated = self.httpclient.get_honyaku_deepl(self.deepl_apikey,join_body)
-            #         if translated is not None:
-            #             join_body = translated
-            print (parent_title ,",", major_tilte + ",", minor_title + ",", "\"",  join_body.strip().replace( '\n', '').replace(",", u"、"), "\"")
-
-    def enterpriseConfigurationTcpCrd_scraping(self,data,scrape_con,DEF_ITEM="defaultscraping"):
-        self.communityConfigurationDefaultsCRD_scraping(data,scrape_con,DEF_ITEM)
-
-    def enterpriseConfigurationStartupArgs_scraping(self,data,scrape_con,DEF_ITEM="defaultscraping"):
-        self.communityConfigurationIngressAnnotations_scraping(data,scrape_con,DEF_ITEM)
-
-    def enterpriseConfigurationServiceAnnotations_scraping(self,data,scrape_con,DEF_ITEM="defaultscraping"):
-        self.communityConfigurationIngressAnnotations_scraping(data,scrape_con,DEF_ITEM)
-
-    def enterpriseConfigurationIngressAnnotations_scraping(self,data,scrape_con,DEF_ITEM="defaultscraping"):
-        self.communityConfigurationIngressAnnotations_scraping(data,scrape_con,DEF_ITEM)
-    
-    def communityConfigurationGlobalCRD_scraping(self,data,scrape_con,DEF_ITEM="defaultscraping"):
-        self.communityConfigurationDefaultsCRD_scraping(data,scrape_con,DEF_ITEM)
-
-    def communityConfigurationBackendCRD_scraping(self,data,scrape_con,DEF_ITEM="defaultscraping"):
-        self.communityConfigurationDefaultsCRD_scraping(data,scrape_con,DEF_ITEM)
-
-    def enterpriseConfigurationGlobalCRD_scraping(self,data,scrape_con,DEF_ITEM="defaultscraping"):
-        self.communityConfigurationDefaultsCRD_scraping(data,scrape_con,DEF_ITEM)
-
-    def enterpriseConfigurationBackendCRD_scraping(self,data,scrape_con,DEF_ITEM="defaultscraping"):
-        self.communityConfigurationDefaultsCRD_scraping(data,scrape_con,DEF_ITEM)
-
-
-    def enterpriseConfigurationDefaultsCRD_scraping(self,data,scrape_con,DEF_ITEM="defaultscraping"):
-        self.communityConfigurationDefaultsCRD_scraping(data,scrape_con,DEF_ITEM)
-
-    def communityConfigurationDefaultsCRD_scraping(self,data,scrape_con,DEF_ITEM="defaultscraping"):
-        content = self.httpclient.get(scrape_con['url'])
-        data = content.read()
-        elem = html.fromstring(data)
-        section_elm = elem.xpath("//h1")[0]
-        # 配下のすべてのテキストを取得
-        all_text = section_elm.xpath('.//text()')
-        # リストで取得されるため、結合する場合
-        major_tilte = ' '.join(all_text)
-        preceding_siblings = section_elm.xpath('preceding-sibling::*[1]')
-        parent_title = preceding_siblings[0].text if len(preceding_siblings) > 0 and preceding_siblings[0].text else ""
-        componet_elms = section_elm.xpath(scrape_con['componet'])
-        for item in componet_elms:
-            #if item.text == "Defaults config" and item.getattr("id") != "defaults-config-enterprise-defaults-version-v3-0":
-            #    continue
-            # 配下のすべてのテキストを取得
-            all_text = item.text
-            # リストで取得されるため、結合する場合
-            minor_title = ' '.join(all_text)
-            body_all_text = ""
-            desc_all_text = ""
-            bodys = item.xpath('./following-sibling::*')
-            for body in bodys:
-                if body.tag == "h2": 
+                if body.tag == "h2" or body.tag == "h3": 
                     break
-                body_all_text = body.xpath('.//text()[not(ancestor::script) and (not(ancestor::select) or ancestor::option[@selected])]')
-                join_body = ' '.join(body_all_text)
-                if self.deepl_enable:
-                    translated = self.httpclient.get_honyaku_deepl(self.deepl_apikey,join_body)
-                    if translated is not None:
-                        join_body = translated
-                print (parent_title ,",", major_tilte + ",", minor_title.strip().replace( '\n', ''), "\"",  join_body.strip().replace( '\n', '').replace(",", u"、"), "\"")
-  
+                body_texts = body.xpath('.//text()')
+                join_body = ' '.join(body_texts)
+                print (major_tilte ,",", minor_title.strip().replace( '\n', '') + ",", child_title.strip().replace( '\n', '') + ",", "\"",  join_body.strip().replace( '\n', '').replace(",", u"、"), "\"")
+ 
 class JRNoteYAMLCache(object):
     """JRNoteYAMLCache for Yaml Configration
 

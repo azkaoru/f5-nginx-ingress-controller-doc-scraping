@@ -5,15 +5,27 @@ setting:
  deepl_apikey: "todo"
 
 jrnote:
-- gettingStarted
-- overview
+- overviewAbout
+- overviewDesign
+- overviewNginxPlus
+- overviewProductTelemetry
 
-gettingStarted_scraping:
- url: https://docs.nginx.com/nginx-ingress-controller/overview/
+overviewAbout_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/overview/about/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]
 
-overview_scraping:
+overviewDesign_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/overview/design/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+overviewNginxPlus_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/overview/nginx-plus/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+overviewProductTelemetry_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/overview/product-telemetry/
  section: //h1
- componet: ./../following-sibling::main/h2
+ componet: ./following-sibling::*[self::h2 or self::h3]

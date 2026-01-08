@@ -72,6 +72,13 @@ cp jrnote.nginx-ingress.technical-specifications.yml jrnote.yml
 python jrnote/jrnote.py > csv/nginx-ingress-controller-docs-technical-specifications.csv
 ```
 
+tutorialsのスクレイプ実行
+
+```bash
+cp jrnote.nginx-ingress.tutorials.yml jrnote.yml
+python jrnote/jrnote.py > csv/nginx-ingress-controller-docs-tutorials.csv
+```
+
 ## 設定ファイル
 
 `jrnote.yml` を編集することで、スクレイピング対象のURLやページ構造を設定できます。

@@ -5,9 +5,15 @@ setting:
  deepl_apikey: "todo"
 
 jrnote:
-- troubleshooting
+- troubleshootingCommercialSupport
+- troubleshootingCommonIssues
 
-troubleshooting_scraping:
- url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/
+troubleshootingCommercialSupport_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/commercial-support/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+troubleshootingCommonIssues_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/common-issues/
  section: //h1
  componet: ./following-sibling::*[self::h2 or self::h3]

@@ -7,6 +7,9 @@ setting:
 jrnote:
 - troubleshootingCommercialSupport
 - troubleshootingCommonIssues
+- troubleshootingIngress
+- troubleshootingConfigmapPolicy
+- troubleshootingVirtualserver
 
 troubleshootingCommercialSupport_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/troubleshoot-support/
@@ -15,5 +18,20 @@ troubleshootingCommercialSupport_scraping:
 
 troubleshootingCommonIssues_scraping:
  url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/troubleshoot-common/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+troubleshootingIngress_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/troubleshoot-ingress/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+troubleshootingConfigmapPolicy_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/troubleshoot-configmap-policy/
+ section: //h1
+ componet: ./following-sibling::*[self::h2 or self::h3]
+
+troubleshootingVirtualserver_scraping:
+ url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/troubleshoot-virtualserver/
  section: //h1
  componet: ./following-sibling::*[self::h2 or self::h3]

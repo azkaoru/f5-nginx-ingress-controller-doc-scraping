@@ -9,11 +9,11 @@ jrnote:
 - troubleshootingCommonIssues
 
 troubleshootingCommercialSupport_scraping:
- url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/commercial-support/
+ url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/troubleshoot-support/
  section: //h1
  componet: ./following-sibling::*[self::h2 or self::h3]
 
 troubleshootingCommonIssues_scraping:
- url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/common-issues/
+ url: https://docs.nginx.com/nginx-ingress-controller/troubleshooting/troubleshoot-common/
  section: //h1
  componet: ./following-sibling::*[self::h2 or self::h3]

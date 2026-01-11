@@ -96,18 +96,28 @@ class JRNoteParser(object):
         content = self.httpclient.get(scrape_con['url'])
         data = content.read()
         elem = html.fromstring(data)
+
+        menu_items =elem.xpath('//div//nav//ol//li//a')
+        parent_title = ""
+        if len(menu_items) !=0:
+            parent_title = '('+ menu_items[len(menu_items)-1].text + ") "
+
         section_elm = elem.xpath(scrape_con['section'])[0]
         # 配下のすべてのテキストを取得
         all_text = section_elm.xpath('.//text()')
         # リストで取得されるため、結合する場合
-        major_tilte = ' '.join(all_text)
+        major_tilte = parent_title + ' '.join(all_text)
         # 兄弟要素群を取得
         following_siblings = section_elm.xpath('following-sibling::*')
         minor_item = None
         for fs in following_siblings:
             if fs.tag == "h2" : 
                  break
-            print (major_tilte,",", "NONE," , "NONE,", "\"",  ' '.join( fs.xpath('.//text()')).strip().replace( '\n', '').replace(",", u"、"), "\"")
+
+            bodys=fs.xpath('.//text()')
+            empty_check = ' '.join(bodys).strip()
+            if empty_check != "" : 
+                print (major_tilte,",", "NONE," , "NONE,", "\"",  ' '.join(bodys).strip().replace( '\n', '').replace(",", u"、"), "\"")
         
         comp_elms = section_elm.xpath(scrape_con['componet'])
         join_body = ""

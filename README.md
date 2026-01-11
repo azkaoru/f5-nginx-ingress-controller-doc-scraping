@@ -44,6 +44,13 @@ cp jrnote.nginx-ingress.installation.yml jrnote.yml
 python jrnote/jrnote.py > csv/nginx-ingress-controller-docs-installation.csv
 ```
 
+technical specificationsのスクレイプ実行
+
+```bash
+cp jrnote.nginx-ingress.technical-specifications.yml jrnote.yml
+python jrnote/jrnote.py > csv/nginx-ingress-controller-docs-technical-specifications.csv
+```
+
 configurationのスクレイプ実行
 
 ```bash
@@ -65,12 +72,6 @@ cp jrnote.nginx-ingress.troubleshooting.yml jrnote.yml
 python jrnote/jrnote.py > csv/nginx-ingress-controller-docs-troubleshooting.csv
 ```
 
-technical specificationsのスクレイプ実行
-
-```bash
-cp jrnote.nginx-ingress.technical-specifications.yml jrnote.yml
-python jrnote/jrnote.py > csv/nginx-ingress-controller-docs-technical-specifications.csv
-```
 
 tutorialsのスクレイプ実行
 
